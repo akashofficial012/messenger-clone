@@ -85,7 +85,17 @@ const AuthForm = () => {
     />
   </div>
 </div>
-
+<div>
+            <p className="text-sm text-gray-500 text-center mt-4">
+              {variant === "login" ? "New to us?" : "Already have an account?"}
+              <span
+                onClick={toggleVariant}
+                className="cursor-pointer text-blue-500 hover:underline ml-1"
+              >
+                {variant === "login" ? "Create an account" : "Login"}
+              </span>
+            </p>
+          </div>
         </form>
       </div>
     </div>

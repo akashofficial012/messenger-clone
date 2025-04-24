@@ -4,7 +4,7 @@ import { FieldError, FieldValues, UseFormRegister } from 'react-hook-form'
 
 interface InputFormProps {
   register: UseFormRegister<FieldValues>;
-  errors: FieldError;
+  errors?: FieldError;
   required?: boolean;
   id: string;
   label: string;
