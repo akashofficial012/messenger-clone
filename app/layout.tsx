@@ -8,6 +8,7 @@ import { Providers } from "./providers";
 import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
 import { Navbar } from "@/components/navbar";
+import { ToastProvider } from "@heroui/toast";
 
 export const metadata: Metadata = {
   title: {
@@ -45,6 +46,9 @@ export default function RootLayout({
        
             {/* <Navbar /> */}
             <main >
+            <ToastProvider
+            placement="top-center" toastOffset={16}
+            />
               {children}
             </main>
         </Providers>

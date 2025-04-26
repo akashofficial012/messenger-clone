@@ -1,24 +1,22 @@
-import bcrypt from 'bcryptjs';
-import prisma from '@/libs/prismadb';
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
+import bcrypt from "bcryptjs";
+import prisma from "@/libs/prismadb";
 
 export async function POST(request: Request) {
- try {
+  try {
     const body = await request.json();
     const { email, name, password } = body;
 
     if (!email || !name || !password) {
-      return new Response('Missing fields', { status: 400 });
+      return new Response("Missing fields", { status: 400 });
     }
 
     const existingUser = await prisma.user.findUnique({
-      where: {
-        email,
-      },
+      where: { email },
     });
 
     if (existingUser) {
-      return new Response('Email already in use', { status: 422 });
+      return new Response("Email already in use", { status: 400 });
     }
 
     const hashedPassword = await bcrypt.hash(password, 12);
@@ -27,15 +25,13 @@ export async function POST(request: Request) {
       data: {
         email,
         name,
-        hashedPassword,
+        hashPassword: hashedPassword,
       },
     });
 
     return NextResponse.json(user);
-    
- } catch (error) {
-    console.log(error, "REGISTRATION_ERROR");
-    return new Response('Internal error', { status: 500 });
+  } catch (error) {
+    console.error("Register error:", error);
+    return new Response("Internal Server Error", { status: 500 });
   }
-    
- }
+}

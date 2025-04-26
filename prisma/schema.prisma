@@ -1,12 +1,5 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
-  output   = "../app/generated/prisma"
 }
 
 datasource db {
@@ -15,30 +8,32 @@ datasource db {
 }
 
 model User {
-  id      String   @id @default(auto()) @map("_id") @db.ObjectId
-  email   String?   @unique
-  name    String?
-  emailVerified DateTime?
-  image   String?
-  hashPassword String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  conversations String[] @db.ObjectId
-  accounts      account[]
+  id              String    @id @default(auto()) @map("_id") @db.ObjectId
+  email           String?   @unique
+  name            String?
+  emailVerified   DateTime?
+  image           String?
+  hashPassword    String?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  conversations   String[]  @db.ObjectId
+  accounts        account[]
 }
+
 model account {
-  id       String   @id @default(auto()) @map("_id") @db.ObjectId
-  userId   String   @db.ObjectId
-  provider String
-  type     String
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId            String   @db.ObjectId
+  provider          String
+  type              String
   providerAccountId String
-  refreshToken String?
-  accessToken String?
-  expiresAt Int?
-  tokenType String?
-  scope String?
-  idToken String?
-  sessionState String?
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  refreshToken      String?
+  accessToken       String?
+  expiresAt         Int?
+  tokenType         String?
+  scope             String?
+  idToken           String?
+  sessionState      String?
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
   @@unique([provider, providerAccountId])
 }

@@ -164,11 +164,12 @@ const config = {
     "db"
   ],
   "activeProvider": "mongodb",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "mongodb+srv://akashmondalcode:Akash123@cluster0.pxdt3o4.mongodb.net/messenger_clone?retryWrites=true&w=majority&appName=Cluster0"
+        "value": null
       }
     }
   },
