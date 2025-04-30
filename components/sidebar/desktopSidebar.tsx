@@ -7,7 +7,7 @@ import { ThemeSwitch } from "../theme-switch";
 export default function DesktopSidebar() {
   return (
     <div>
-         <div className="w-16 bg-content1 flex flex-col items-center py-4 border-r border-divider/40 h-screen">
+         <div className="w-16 bg-content1 flex flex-col items-center py-4 px-2 border-r border-divider/40 h-screen">
       <div className="w-10 h-10 bg-primary-100 rounded-xl mb-8 flex items-center justify-center">
         <Icon icon="lucide:zap" className="text-primary" />
       </div>
