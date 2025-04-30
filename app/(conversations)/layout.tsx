@@ -1,14 +1,11 @@
+
 import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
-import { Link } from "@heroui/link";
 import clsx from "clsx";
-
-import { Providers } from "./providers";
 
 import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
-import { Navbar } from "@/components/navbar";
-import { ToastProvider } from "@heroui/toast";
+import Sidebar from "@/components/sidebar/sideBar";
 
 export const metadata: Metadata = {
   title: {
@@ -39,19 +36,12 @@ export default function RootLayout({
       <body
         className={clsx(
           "min-h-screen bg-gray-100 font-sans antialiased",
-          fontSans.variable,
-        )}
-      >
-        <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-       
-            {/* <Navbar /> */}
-            <main >
-            <ToastProvider
-            placement="top-center" toastOffset={16}
-            />
-              {children}
-            </main>
-        </Providers>
+          fontSans.variable
+        )}>
+        {" "}
+        <Sidebar>
+          <div className="h-full">{children}</div>
+        </Sidebar>
       </body>
     </html>
   );

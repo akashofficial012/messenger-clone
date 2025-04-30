@@ -45,7 +45,7 @@ const AuthForm = () => {
             description: "Account created successfully!",
             // variant: "success",
           });
-          toggleVariant(); // Switch to login form after register
+          toggleVariant();
         })
         .catch((error) => {
           console.error("Registration error:", error);
@@ -53,7 +53,7 @@ const AuthForm = () => {
             title: "Registration Error",
             color: "success",
             description: "Something went wrong. Please try again.",
-            // variant: "error",
+
           });
         })
         .finally(() => {
@@ -98,33 +98,34 @@ const AuthForm = () => {
 
   const socialAction = (provider: string) => {
     setIsLoading(true);
-
     signIn(provider, { redirect: false })
       .then((callback) => {
         if (callback?.error) {
           addToast({
-            title: "Social Login Error",
+            title: "Login Error",
             description: callback.error,
-            // variant: "error",
+            color: "danger",
           });
         }
 
         if (callback?.ok) {
           addToast({
-            title: "Success",
+            title: "Success toast",
             description: "Logged in successfully!",
-            // variant: "success",
-          });
-          router.push("/");
+            color: "success",
+          })
+          router.push("/"); 
         }
       })
       .catch((error) => {
-        console.error("Social login error:", error);
+        console.error("Unexpected social login error:", error);
       })
       .finally(() => {
         setIsLoading(false);
       });
+
   };
+  
 
   return (
     <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
