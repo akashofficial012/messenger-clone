@@ -12,7 +12,7 @@ async function Sidebar({ children }: {
       
          <DesktopSidebar /> 
          <MobileSidebar/> 
-      <main className=" h-full">
+      <main className=" md:w-2/5 w-full">
         {children}
       </main>
     </div>

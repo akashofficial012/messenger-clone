@@ -40,9 +40,14 @@ export default function RootLayout({
           fontSans.variable
         )}>
         {" "}
+        
         <Sidebar>
-        <ChatList/>
-          <div className="h-full">{children}</div>
+          <div className="h-full flex flex-1">
+            <ChatList/>
+            <div >
+              {children}
+            </div>
+          </div>
         </Sidebar>
       </body>
     </html>
