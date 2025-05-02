@@ -6,6 +6,7 @@ import clsx from "clsx";
 import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
 import Sidebar from "@/components/sidebar/sideBar";
+import ChatList from "@/components/chat-list";
 
 export const metadata: Metadata = {
   title: {
@@ -40,6 +41,7 @@ export default function RootLayout({
         )}>
         {" "}
         <Sidebar>
+        <ChatList/>
           <div className="h-full">{children}</div>
         </Sidebar>
       </body>
