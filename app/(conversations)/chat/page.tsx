@@ -1,7 +1,12 @@
+
+import EmptyState from '@/components/EmptyState'
 import React from 'react'
 
 export default function page() {
   return (
-    <div>chat</div>
+    <div className='hidden md:block '>
+      <EmptyState/>
+    </div>
   )
 }
+

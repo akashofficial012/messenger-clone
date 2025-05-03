@@ -1,4 +1,3 @@
-
 import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
 import clsx from "clsx";
@@ -6,7 +5,7 @@ import clsx from "clsx";
 import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
 import Sidebar from "@/components/sidebar/sideBar";
-import ChatList from "@/components/chat-list";
+import { Providers } from "../providers";
 
 export const metadata: Metadata = {
   title: {
@@ -38,17 +37,14 @@ export default function RootLayout({
         className={clsx(
           "min-h-screen bg-gray-100 font-sans antialiased",
           fontSans.variable
-        )}>
-        {" "}
-        
+        )}
+      >
+                <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
+
         <Sidebar>
-          <div className="h-full flex flex-1">
-            <ChatList/>
-            <div >
-              {children}
-            </div>
-          </div>
+            <div >{children}</div>
         </Sidebar>
+        </Providers>
       </body>
     </html>
   );

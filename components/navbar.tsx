@@ -16,7 +16,6 @@ import NextLink from "next/link";
 import clsx from "clsx";
 
 import { siteConfig } from "@/config/site";
-import { ThemeSwitch } from "@/components/theme-switch";
 import {
   TwitterIcon,
   GithubIcon,
@@ -25,6 +24,7 @@ import {
   SearchIcon,
   Logo,
 } from "@/components/icons";
+import { ThemeSwitch } from "./theme-switch";
 
 export const Navbar = () => {
   const searchInput = (
@@ -50,7 +50,7 @@ export const Navbar = () => {
 
   return (
     <HeroUINavbar maxWidth="xl" position="sticky">
-      <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
+      <NavbarContent className="basis-1/5 sm:basis-full dark:bg-zinc-900" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <NextLink className="flex justify-start items-center gap-1" href="/">
             <Logo />
@@ -89,7 +89,7 @@ export const Navbar = () => {
           <Link isExternal aria-label="Github" href={siteConfig.links.github}>
             <GithubIcon className="text-default-500" />
           </Link>
-          <ThemeSwitch />
+          <ThemeSwitch/>
         </NavbarItem>
         <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
         <NavbarItem className="hidden md:flex">
